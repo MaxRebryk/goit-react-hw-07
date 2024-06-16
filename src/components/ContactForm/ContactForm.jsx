@@ -1,15 +1,15 @@
-import { useId } from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
-import { useDispatch } from 'react-redux';
-import { addContact } from '../../redux/contactsSlice';
+import { useId } from "react";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
+import { useDispatch } from "react-redux";
+import { addContact } from "../../redux/contactsOps.js";
 export default function ContactForm() {
   const nameId = useId();
   const numberId = useId();
 
   const dispatch = useDispatch();
 
-  const onAdd = values => {
+  const onAdd = (values) => {
     dispatch(
       addContact({ id: Date.now(), name: values.name, number: values.number })
     );
@@ -17,18 +17,18 @@ export default function ContactForm() {
 
   const FeedbackSchema = Yup.object().shape({
     name: Yup.string()
-      .min(3, 'Too Short!')
-      .max(50, 'Too Long!')
-      .required('Required'),
+      .min(3, "Too Short!")
+      .max(50, "Too Long!")
+      .required("Required"),
     number: Yup.string()
-      .min(3, 'Too Short!')
-      .max(50, 'Too Long!')
-      .required('Required'),
+      .min(3, "Too Short!")
+      .max(50, "Too Long!")
+      .required("Required"),
   });
 
   const initialValues = {
-    name: '',
-    number: '',
+    name: "",
+    number: "",
   };
 
   const handleSubmit = (values, actions) => {
