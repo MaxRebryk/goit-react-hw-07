@@ -10,7 +10,7 @@ import { useEffect } from "react";
 
 export default function ContactList() {
   const items = useSelector(selectContacts);
-
+  const dispatch = useDispatch();
   const filteredItems = useSelector(selectFilteredcontacts);
   const handleDelete = (id) => {
     dispatch(deleteContact(id));
